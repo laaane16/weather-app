@@ -45,7 +45,7 @@ function getDay(date) {
 
 
 async function getCity(city){
-  let url = `https://api.weatherapi.com/v1/forecast.json?key=25fe278046144634821154855240208&q=${city}&days=4&aqi=yes`;
+  let url = `https://api.weatherapi.com/v1/forecast.json?key=25fe278046144634821154855240208&q=${city}&days=3&aqi=yes`;
 
   document.querySelector('.content').innerHTML = '';
 
@@ -108,7 +108,7 @@ function createCards() {
   const list = createEl("ul", "content__list");
   let items = [];
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 3; i++) {
     const item = createEl("li", "content__item");
     item.classList.add("item");
 
@@ -299,6 +299,7 @@ async function createApp(dt) {
 
   [list, items] = createCards();
   document.querySelectorAll(".item__temperature").forEach((el, index) => {
+    console.log(data)
     el.append(data["forecast"]["forecastday"][index]["day"]["avgtemp_c"], "°C");
   });
   document.querySelectorAll(".item__image").forEach((el, index) => {
@@ -318,6 +319,6 @@ async function createApp(dt) {
 
 }
 
-createApp("https://api.weatherapi.com/v1/forecast.json?key=25fe278046144634821154855240208&q=Kazan&days=4&aqi=yes"
+createApp("https://api.weatherapi.com/v1/forecast.json?key=25fe278046144634821154855240208&q=Kazan&days=3&aqi=yes"
 );
 
